@@ -1,10 +1,10 @@
-// swap function util for sorting algorithms takes input of 2 DOM elements with .style.height feature
-function swap(el1, el2) {
-    console.log('In swap()');
+// swap function for sorting algorithms takes input of 2 DOM elements with .style.height feature
+function swap(element1, element2) {
+    // console.log('In swap()');
     
-    let temp = el1.style.height;
-    el1.style.height = el2.style.height;
-    el2.style.height = temp;
+    let temp = element1.style.height;
+    element1.style.height = element2.style.height;
+    element2.style.height = temp;
 }
 
 // Disables sorting buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
@@ -27,12 +27,12 @@ function enableSortingBtn(){
 
 // Disables size slider used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableSizeSlider(){
-    document.querySelector("#arr_sz").disabled = true;
+    document.querySelector("#arr_size").disabled = true;
 }
 
 // Enables size slider used in conjunction with disable
 function enableSizeSlider(){
-    document.querySelector("#arr_sz").disabled = false;
+    document.querySelector("#arr_size").disabled = false;
 }
 
 // Disables newArray buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
@@ -52,15 +52,16 @@ function waitforme(milisec) {
     }) 
 }
 
-// Selecting size slider from DOM
-let arraySize = document.querySelector('#arr_sz');
+// Selecting size of array from slider from DOM
+let arraySize = document.querySelector('#arr_size');
 
 // Event listener to update the bars on the UI
 arraySize.addEventListener('input', function(){
-    console.log(arraySize.value, typeof(arraySize.value));
+    // console.log(arraySize.value, typeof(arraySize.value));
     createNewArray(parseInt(arraySize.value));
 });
 
+// delay time for animation so that we can visualize properly
 // Default input for waitforme function (260ms)
 let delay = 260;
 
@@ -69,7 +70,7 @@ let delayElement = document.querySelector('#speed_input');
 
 // Event listener to update delay time 
 delayElement.addEventListener('input', function(){
-    console.log(delayElement.value, typeof(delayElement.value));
+    // console.log(delayElement.value, typeof(delayElement.value));
     delay = 320 - parseInt(delayElement.value);
 });
 
@@ -79,7 +80,7 @@ let array = [];
 // Call to display bars right when you visit the site
 createNewArray();
 
-// To create new array input size of array
+// To create new random array input size of array
 function createNewArray(noOfBars = 60) {
     // calling helper function to delete old bars from dom
     deleteChild();
@@ -87,9 +88,9 @@ function createNewArray(noOfBars = 60) {
     // creating an array of random numbers 
     array = [];
     for (let i = 0; i < noOfBars; i++) {
-        array.push(Math.floor(Math.random() * 250) + 1);
+        array.push(Math.floor(Math.random() * 200) + 1);
     }
-    console.log(array);
+    // console.log(array);
 
     // select the div #bars element
     const bars = document.querySelector("#bars");
@@ -114,8 +115,8 @@ function deleteChild() {
 // Selecting newarray button from DOM and adding eventlistener
 const newArray = document.querySelector(".newArray");
 newArray.addEventListener("click", function(){
-    console.log("From newArray " + arraySize.value);
-    console.log("From newArray " + delay);
+    // console.log("From newArray " + arraySize.value);
+    // console.log("From newArray " + delay);
     enableSortingBtn();
     enableSizeSlider();
     createNewArray(arraySize.value);
